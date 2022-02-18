@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ipc_jlincar_p1/pages/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: LoginApp(),
+      home: LoginPage(),
     ); //MaterialApp
 
   }
