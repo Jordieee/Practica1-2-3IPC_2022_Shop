@@ -1,4 +1,4 @@
-package com.example.ipc_jlincar_p1
+package epsa.jlincar.p1
 
 import io.flutter.embedding.android.FlutterActivity
 
