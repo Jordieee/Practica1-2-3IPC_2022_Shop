@@ -39,9 +39,9 @@ class LoginPage extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green,
+                  color: Colors.grey,
                   spreadRadius: 5,
-                  blurRadius: 70,
+                  blurRadius: 10,
                 ),
               ],
             ),
@@ -55,9 +55,9 @@ class LoginPage extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green,
+                  color: Colors.grey,
                   spreadRadius: 5,
-                  blurRadius: 100,
+                  blurRadius: 10,
                 ),
               ],
             ),
@@ -132,9 +132,12 @@ SizedBox _Footer(BuildContext context) {
           child: Container(
               width: 175,
               height: 45,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.indigo,
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(70),
+                  bottomLeft: Radius.circular(70),
+                ),
               ),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
