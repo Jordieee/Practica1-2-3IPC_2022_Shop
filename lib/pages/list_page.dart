@@ -22,23 +22,24 @@ class MyList extends StatelessWidget {
     final list = Product.initial.map((product) {
       return Column(children: [
         const Divider(),
-        Container(
-          child: ListTile(
-            trailing: const Icon(Icons.chevron_right, color: Colors.grey),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-              Text(product.name),
-              Text("${product.price}€", style: const TextStyle(color: Colors.grey),),
-            ]),
-            leading: Image.asset(product.iconPath),
-            onTap: () {
-              var route = MaterialPageRoute(
-                builder: (context) => ProductDetailsPage(),
-              );
-              Navigator.of(context).push(route);
-            },
-          ),
+        ListTile(
+          trailing:
+              const Icon(Icons.chevron_right, color: Colors.grey, size: 50.0),
+          title:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(product.name),
+            Text(
+              "${product.price}€",
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ]),
+          leading: Image.asset(product.iconPath),
+          onTap: () {
+            var route = MaterialPageRoute(
+              builder: (context) => ProductDetailsPage(),
+            );
+            Navigator.of(context).push(route);
+          },
         ),
       ]);
     }).toList();
