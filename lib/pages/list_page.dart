@@ -33,7 +33,7 @@ class MyList extends StatelessWidget {
               style: const TextStyle(color: Colors.grey),
             ),
           ]),
-          leading: Image.asset(product.iconPath),
+          leading: Image.asset(product.imgPath),
           onTap: () {
             var route = MaterialPageRoute(
               builder: (context) => ProductDetailsPage(),
