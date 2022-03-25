@@ -1,28 +1,39 @@
 
+class Products {
+  late List<Product> products;
+
+  Products({required this.products});
+
+  Products.fromJson(Map<String, dynamic> json) {
+    if (json['products'] != null) {
+      products = <Product>[];
+      json['products'].forEach((v) {
+        products.add(Product.fromJson(v));
+      });
+    }
+  }
+}
+
 class Product {
   late String name;
   late double price;
-  late String imgPath;
+  late String image;
+  late String description;
 
-  static final List<Product> initial = [
-    Product(name: "Oculus Quest 2", price: 10.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 20.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 30.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 40.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 50.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 60.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 70.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 80.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 90.50, imgPath: "assets/img/oculus.jpg"),
-    Product(name: "Oculus Quest 2", price: 100.50, imgPath: "assets/img/oculus.jpg"),
+  Product(
+      {required this.name,
+        required this.price,
+        required this.image,
+        required this.description});
 
-  ];
-
-  Product({
-    required this.name,
-    required this.price,
-    required this.imgPath});
+  Product.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    price = json['price'];
+    image = json['image'];
+    description = json['description'];
+  }
 }
+
 
 
 
