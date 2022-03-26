@@ -31,12 +31,39 @@ class FutureList extends StatelessWidget {
         if(snapshot.hasData){
           Map<String, dynamic> data = json.decode(snapshot.data!);
           var products = Products.fromJson(data);
+          final list = products.products.map((products) {
+            return Column(children: [
+              const Divider(),
+              ListTile(
+                trailing: const Icon(Icons.chevron_right, color: Colors.grey, size: 50.0),
+                title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(products.name),
+                      Text("${products.price}€", style: const TextStyle(color: Colors.grey),),
+                    ]),
+                leading: Hero(tag: "image_1", child: Image.asset(products.image)),
+                onTap: () {
+                  var route = MaterialPageRoute(
+                    builder: (context) => ProductDetailsPage(
+                      name: products.name,
+                      price: products.price,
+                      description: products.description,
+                      image: products.image,
+                      //heroTag: ,
+                    ),
+                  );
+                  Navigator.of(context).push(route);
+                },
+              ),
+            ]);
+          }).toList();
+
           return ListView.builder(
-            itemCount: snapshot.data!.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Text(snapshot.data![index]);
-            },
+            itemCount: list.length,
+            itemBuilder: (context, i) => list[i],
           );
+
         }else{
           return const LinearProgressIndicator();
         }
@@ -52,7 +79,7 @@ class MyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final list = Product.initial.map((product) {
+    final list = products.products.map((products) {
       return Column(children: [
         const Divider(),
         ListTile(
@@ -60,10 +87,10 @@ class MyList extends StatelessWidget {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-            Text(product.name),
-            Text("${product.price}€", style: const TextStyle(color: Colors.grey),),
+            Text(products.name),
+            Text("${products.price}€", style: const TextStyle(color: Colors.grey),),
           ]),
-          leading: Image.asset(product.imgPath),
+          leading: Image.asset(products.imgPath),
           onTap: () {
             var route = MaterialPageRoute(
               builder: (context) => ProductDetailsPage(product: , imageRoute: ,),
@@ -80,4 +107,5 @@ class MyList extends StatelessWidget {
     );
   }
 }
+
 */

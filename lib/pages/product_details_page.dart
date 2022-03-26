@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({Key? key, required this.product, required this.heroTag}) : super(key: key);
+  ProductDetailsPage({
+    Key? key,
+    required this.name,
+    required this.price,
+    required this.description,
+    required this.image,
+    //required this.heroTag
+  }) : super(key: key);
 
-  String product;
-  String heroTag;
+  String name;
+  double price;
+  String description;
+  String image;
+  //String heroTag;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
-        title: Text(product),
+        title: const Text("Product Details"),
       ),
-      body:
-        Image.asset(imageRoute)
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          color: Colors.grey
+        ),
+      )
+
     );
   }
 }
