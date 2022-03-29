@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:ipc_jlincar_p1/model/list_products.dart';
 import 'product_details_page.dart';
+import 'dart:math';
 
 class ListPage extends StatelessWidget {
   const ListPage({Key? key}) : super(key: key);
+
 
 
 
@@ -16,13 +18,14 @@ class ListPage extends StatelessWidget {
           title: const Text('Products'),
           backgroundColor: Colors.indigo,
         ),
-        body: const FutureList());
+        body: FutureList());
   }
 }
 
 class FutureList extends StatelessWidget {
-  const FutureList({Key? key}) : super(key: key);
+  FutureList({Key? key}) : super(key: key);
 
+  var random = Random();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -42,7 +45,7 @@ class FutureList extends StatelessWidget {
                       Text(products.name),
                       Text("${products.price}€", style: const TextStyle(color: Colors.grey),),
                     ]),
-                leading: Hero(tag: "image_1", child: Image.asset(products.image)),
+                leading: Hero(tag: "image" + random.nextInt(1000).toString(), child: Image.asset(products.image, width: 100,height: 100,)),
                 onTap: () {
                   var route = MaterialPageRoute(
                     builder: (context) => ProductDetailsPage(
@@ -50,7 +53,7 @@ class FutureList extends StatelessWidget {
                       price: products.price,
                       description: products.description,
                       image: products.image,
-                      //heroTag: ,
+                      heroTag: "image" + random.toString() ,
                     ),
                   );
                   Navigator.of(context).push(route);
